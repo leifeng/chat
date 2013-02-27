@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>用户注册</title>
+        <style>
+            body{padding: 0px;margin: 0px}
+            ul{padding: 0px;}
+            ul li{list-style-type: none}            
+        </style>
+    </head>
+    <body>
+    <nav>
+        <a href="/index">首页</a>
+        <a href="/bbs">论坛</a>
+        <a href="/chat">聊</a>
+        <a href="/reg">注册</a>
+        <a href="/login">登录</a>
+    </nav>
+    <br/>
+        <form method="post" action="/reg">
+        <section>
+            <header>注册</header>
+            <ul>
+                <li>用户名:<input type="text" width="100" name="user"></li>
+                <li>密码:<input type="password" width="100" name="pwd"></li>
+                <li><span><%=info%></span></li>
+            </ul>
+            <input type="submit" value="注册">
+        </section>
+        </form>
+
+    </body>
+</html>

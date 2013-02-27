@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>联系我</title>
+    <link href="/css/chat.css" rel="stylesheet">
+    <script src="/js/jquery-1.6.1.min.js"></script>
+    <script src="/js/jquery.qqFace.js"></script>
+    <script src="/js/title.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/time.js"></script>
+    <script src="/js/chat.js"></script>
+    <script src="/js/iColorPicker.js"></script>
+    <!--[if IE]>
+    <script type="text/javascript" src="/js/html5.js"></script><![endif]-->
+</head>
+<body>
+<input type="hidden" value='<%=user%>' id="name">
+<section>
+    <div id="showMsg" class="l">
+    </div>
+    <div id="showPeople" class="r">
+        <div id="PeopleNum"></div>
+        <ul id="People">
+        </ul>
+    </div>
+    <div class="clearFix"></div>
+</section>
+<section>
+    <div>@用户名 内容 --可以私聊</div>
+    <div style="width: 100%">
+        <div class="l">
+            <div class="comment">
+                <div class="com_form">
+                    <textarea wrap="physical" style="width: 680px;height: 60px" id="msg" name='msg'></textarea>
+
+                    <p>
+                        <span class="emotion">表情</span><input type="button" class="sub_btn" value="提交" id="sendButton">
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="r">
+            <ul id="tool">
+                <li>字体颜色:<input id="mycolor" name="mycolor" type="text" value="#918F8F" class="iColorPicker" /></li>
+                <li><input type="submit" value="清理屏幕" id="clear" width="100" height="20" style="width: 100px;height: 20px"></li>
+                <li><input type="submit" value="退出聊天" id="exit" width="100" height="20" style="width: 100px;height: 20px"></li>
+            </ul>
+        </div>
+        <div class="clearFix"></div>
+    </div>
+</section>
+</body>
+</html>
