@@ -41,9 +41,11 @@ $(function () {
         var user = userlist.toString().split(',');
         $('#People').html('');
         $('#PeopleNum').html("在线" + user.length + "人");
+        var Peoples;
         for (var i = 0; i < user.length; i++) {
-            $('#People').append("<li><a href='javascript:;'>" + user[i] + "</a></li>");
+            Peoples="<li><a href='javascript:;'>" + user[i] + "</a></li>";
         }
+        $('#People').append(Peoples);
     };
     var sendMsg = function () {
         var msg = $.trim($('#msg').val());
@@ -122,22 +124,22 @@ $(function () {
 //        var timerArr = $.blinkTitle.show();
 //        setTimeout(function () {        //此处是过一定时间后自动消失
 //            $.blinkTitle.clear(timerArr);
-//        }, 4000);
+//        }, 2000);
     }
 
     var start = function () {
         socketListener();
-        $("#sendButton").live('click', function () {
+        $("#sendButton").bind('click', function () {
             sendMsg();
         });
-        $("#exit").live('click', function () {
+        $("#exit").bind('click', function () {
             socket.emit('disconnect');
             location.href = '/';
         });
-        $("#clear").live('click', function () {
+        $("#clear").bind('click', function () {
             $("#showMsg").html("");
         });
-        $("#People li a").live('click', function () {
+        $("#People li a").on('click', function () {
             $("#msg").val('@' + $(this).text() + ' ').focus();
         });
 
@@ -157,6 +159,10 @@ $(function () {
                 e.keyCode = 0;
                 return false;
             }
+        });
+
+        $('#mycolor').colorpicker({
+            format:'hex'
         });
     };
     start();
