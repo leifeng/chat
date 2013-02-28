@@ -13,10 +13,10 @@ var index = function (req, res) {
 }
 
 var reg = function (req, res) {
-    var user = req.body.user.trim();
-    var pwd = req.body.pwd.trim();
+    var user = req.body.inputName.trim();
+    var pwd = req.body.inputPwd.trim();
     redis.regUser(user, pwd, function (uid) {
-        if (uid !=0 &&uid!=null) {
+        if (uid !=0 &&uid!="") {
             req.session.user = user;
             req.session.uid=uid;
             res.redirect('/index');

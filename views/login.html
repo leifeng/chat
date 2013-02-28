@@ -5,17 +5,21 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-ie6.css">
+    <link rel="stylesheet" type="text/css" href="/css/ie.css">
+    <![endif]-->
     <style type="text/css">
         body {
-            padding-top: 60px;
-            padding-bottom: 40px;
+            /*padding-top: 60px;*/
+            /*padding-bottom: 40px;*/
             background-color: #f5f5f5;
         }
 
         .form-signin {
             max-width: 300px;
             padding: 19px 29px 29px;
-            margin: 0 auto 20px;
+            margin: 20px auto 20px;
             background-color: #fff;
             border: 1px solid #e5e5e5;
             -webkit-border-radius: 5px;
@@ -40,12 +44,15 @@
         }
 
     </style>
+    <!--[if IE]>
+    <script type="text/javascript" src="/js/html5.js"></script>
+    <![endif]-->
 </head>
 <body>
-<div class="navbar navbar-fixed-top">
+<div class="navbar navbar-static-top">
     <div class="navbar-inner">
         <a class="brand" href="#"></a>
-        <ul class="nav nav-tabs">
+        <ul class="nav">
             <li><a href="/index">首页</a></li>
             <li><a href="/bbs">论坛</a></li>
             <li><a href="/chat">聊天室</a></li>
@@ -71,5 +78,8 @@
 </div>
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="/js/bootstrap.min.js"></script>
+<!--[if lte IE 6]>
+<script type="text/javascript" src="/js/bootstrap-ie.js"></script>
+<![endif]-->
 </body>
 </html>

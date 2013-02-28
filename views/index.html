@@ -1,32 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
     <title>首页</title>
-    <link href="/css/index.css" rel="stylesheet"/>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-ie6.css">
+    <link rel="stylesheet" type="text/css" href="/css/ie.css">
+    <![endif]-->
     <!--[if IE]>
-    <script type="text/javascript" src="/js/html5.js"></script><![endif]-->
+    <script type="text/javascript" src="/js/html5.js"></script>
+    <![endif]-->
 </head>
 <body>
-<nav>
-    <a href="/index">首页</a>
-    <a href="/bbs">论坛</a>
-    <a href="/chat">聊</a>
-    <a href="/reg">注册</a>
-    <a href="/login">登录</a>
-    <%if(user){%>
-    <a href="/out">退出</a>
-    <%}%>
+<div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+        <a class="brand" href="#"></a>
+        <ul class="nav">
+            <li><a href="/index">首页</a></li>
+            <li><a href="/bbs">论坛</a></li>
+            <li><a href="/chat">聊天室</a></li>
+            <li><a href="/reg">注册</a></li>
+            <%if(!user){%>
+            <li><a href="/login">登录</a></li>
+            <%}%>
+        </ul>
+        <%if(user){%>
+        <ul class="nav pull-right">
+            <li><a>欢迎：<%=user%></a></li>
+            <li><a href="/out">退出</a></li>
+        </ul>
+        <%}%>
+    </div>
+</div>
 
-</nav>
 
-<%if(user){%>
-欢迎：
-<ul>
-    <%=user%>
-</ul>
-<%}%>
-
-
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<!--[if lte IE 6]>
+<script type="text/javascript" src="/js/bootstrap-ie.js"></script>
+<![endif]-->
 </body>
 </html>

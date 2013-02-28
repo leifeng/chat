@@ -1,54 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>聊天室</title>
     <meta charset="utf-8"/>
-    <title>联系我</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-ie6.css">
+    <link rel="stylesheet" type="text/css" href="/css/ie.css">
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="/css/colorpicker.css">
     <link href="/css/chat.css" rel="stylesheet">
-    <script src="/js/jquery-1.6.1.min.js"></script>
-    <script src="/js/jquery.qqFace.js"></script>
-    <script src="/js/title.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/time.js"></script>
-    <script src="/js/chat.js"></script>
-    <script src="/js/iColorPicker.js"></script>
-    <!--[if IE]>
-    <script type="text/javascript" src="/js/html5.js"></script><![endif]-->
+
 </head>
 <body>
 <input type="hidden" value='<%=user%>' id="name">
-<section>
-    <div id="showMsg" class="l">
-    </div>
-    <div id="showPeople" class="r">
-        <div id="PeopleNum"></div>
-        <ul id="People">
-        </ul>
-    </div>
-    <div class="clearFix"></div>
-</section>
-<section>
-    <div>@用户名 内容 --可以私聊</div>
-    <div style="width: 100%">
-        <div class="l">
-            <div class="comment">
-                <div class="com_form">
-                    <textarea wrap="physical" style="width: 680px;height: 60px" id="msg" name='msg'></textarea>
 
-                    <p>
-                        <span class="emotion">表情</span><input type="button" class="sub_btn" value="提交" id="sendButton">
+<div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+        <a class="brand" href="#"></a>
+        <ul class="nav">
+            <li><a href="/index">首页</a></li>
+            <li><a href="/bbs">论坛</a></li>
+            <li><a href="/chat">聊天室</a></li>
+            <li><a href="/reg">注册</a></li>
+            <%if(!user){%>
+            <li><a href="/login">登录</a></li>
+            <%}%>
+        </ul>
+        <%if(user){%>
+        <ul class="nav pull-right">
+            <li><a>欢迎：<%=user%></a></li>
+            <li><a href="/out">退出</a></li>
+        </ul>
+        <%}%>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span2 text-center">
+            <p class="lead" id="PeopleNum"></p>
+            <ul id="People">
+            </ul>
+        </div>
+        <div class="span10">
+            <p class="lead text-center">chat</p>
+
+            <div id="showMsg">
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span2"></div>
+        <div class="span10">
+            <div class="row-fluid">
+                <div class="span12"></div>
+            </div>
+            <div class="row-fluid">
+                <div class="span8">
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <p>
+                                @用户名 内容 --可以私聊
+                            </p>
+                            <textarea id="msg" name='msg' style="width: 98%;height: 60px"></textarea>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <div class="row-fluid">
+                                <div class="span4">
+                                    <span class="emotion">表情</span>
+                                </div>
+                                <div class="span8">
+                                    <a class="btn btn-primary pull-right" id="sendButton"><i class="icon-ok"></i> 提交</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="span4">
+                    <p class="text-center">
+                        功能设置
                     </p>
+                    <ul class="unstyled text-center">
+                        <li><input id="mycolor" type="text" placeholder="字体颜色" class="input-mini" value=""/></li>
+                        <li><p><a id="clear" class="btn  btn-mini btn-success">清理屏幕</a></p></li>
+                        <li><a id="exit" class="btn btn-mini btn-danger">退出聊天</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <div class="r">
-            <ul id="tool">
-                <li>字体颜色:<input id="mycolor" name="mycolor" type="text" value="#918F8F" class="iColorPicker" /></li>
-                <li><input type="submit" value="清理屏幕" id="clear" width="100" height="20" style="width: 100px;height: 20px"></li>
-                <li><input type="submit" value="退出聊天" id="exit" width="100" height="20" style="width: 100px;height: 20px"></li>
-            </ul>
-        </div>
-        <div class="clearFix"></div>
     </div>
-</section>
+</div>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<!--[if lte IE 6]>
+<script type="text/javascript" src="/js/bootstrap-ie.js"></script>
+<![endif]-->
+<script src="/js/jquery.qqFace.js"></script>
+<script src="/js/title.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/time.js"></script>
+<script src="/js/chat.js"></script>
+<script src="/js/bootstrap-colorpicker.js"></script>
+<!--[if IE]>
+<script type="text/javascript" src="/js/html5.js"></script>
+<![endif]-->
 </body>
 </html>
