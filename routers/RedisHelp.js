@@ -106,9 +106,15 @@ var RefreshOnlineList = function (callback) {
     })
 }
 //禁言
-var stopUser = function (uid, callback) {
+
+
+var stopUser = function (uid) {
     client.set("user_static_" + uid, "0");
 }
+var allUser = function (uid) {
+    client.set("user_static_" + uid, "1");
+}
+
 var ifStop = function (uid, callback) {
     client.get('user_static_' + uid, function (err, result) {
         if (result == "1") {
@@ -175,6 +181,7 @@ exports.PullOnlineList = PullOnlineList;
 exports.RefreshOnlineList = RefreshOnlineList;
 //禁言
 exports.ifStop = ifStop;
+exports.allStop = allStop;
 exports.stopUser = stopUser;
 //admin
 exports.adminLogin = adminLogin;
