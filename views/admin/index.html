@@ -1,10 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>禁言管理</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-ie6.css">
+    <link rel="stylesheet" type="text/css" href="/css/ie.css">
+    <![endif]-->
 </head>
 <body>
-hello<%=admin%><%=Users%>
+<div class="container">
+    <H1><%if(query.length){%>
+        <%=query%>
+        <%}%></h1>
+    <table class="table">
+        <tr>
+            <td>id</td>
+            <td>用户名</td>
+            <td>用户状态</td>
+            <td>操作</td>
+        </tr>
+        <%for(var i=3;i<=Users.length;i+=3){%>
 
+        <tr>
+        <td><%=Users[i-3]%></td>
+        <td><%=Users[i-2]%></td>
+            <td>   <%if(Users[i-1]=="0"){%>
+            <span class='badge'>禁言中</span>
+            <%}else{%>
+            <span class='badge badge-success'>正常</span>
+            <%}%></td>
+        <td><a href="/admin/index?id=<%=Users[i-3]%>">提交</a></td>
+        </tr>
+        <%}%>
+    </table>
+</div>
+
+
+
+
+
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<!--[if lte IE 6]>
+<script type="text/javascript" src="/js/bootstrap-ie.js"></script>
+<![endif]-->
 </body>
 </html>
