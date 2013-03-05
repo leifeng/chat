@@ -107,12 +107,17 @@ var RefreshOnlineList = function (callback) {
 }
 //禁言
 
+var speakManage = function (uid, callback) {
+    client.get("user_static_" + uid, function (err, result) {
+        if (result == "1") {
+            client.set("user_static_" + uid, "0");
+            callback();
+        } else {
+            client.set("user_static_" + uid, "1");
+            callback();
+        }
 
-var stopUser = function (uid) {
-    client.set("user_static_" + uid, "0");
-}
-var allUser = function (uid) {
-    client.set("user_static_" + uid, "1");
+    });
 }
 
 var ifStop = function (uid, callback) {
@@ -155,16 +160,27 @@ var allUser = function (callback) {
     })
 
 }
+var delUser = function (uid, callback) {
+    client.get("user_name_" + uid, function (err, username) {
+        client.del("user_" + username, function () {
+            client.del("user_static_" + uid);
+            client.del("user_name_" + uid);
+            client.del("user_pwd_" + uid);
+            client.lrem("user_id", 0, uid);
+            callback();
+        });
+    })
+}
 
 //聊天记录
-var saveRecord=function(content){
-    client.RPUSH('recordList',content,function(err,result){
-        console.log('!!!!!!!!!!!!!!!!'+result);
-        client.LTRIM('recordList',-4,-1);
+var saveRecord = function (content) {
+    client.RPUSH('recordList', content, function (err, result) {
+        console.log('!!!!!!!!!!!!!!!!' + result);
+        client.LTRIM('recordList', -4, -1);
     });
 }
-var chatRecord=function(callback){
-    client.lrange('recordList',0,-1,function(err,result){
+var chatRecord = function (callback) {
+    client.lrange('recordList', 0, -1, function (err, result) {
         console.log(result);
         callback(result);
     });
@@ -181,12 +197,12 @@ exports.PullOnlineList = PullOnlineList;
 exports.RefreshOnlineList = RefreshOnlineList;
 //禁言
 exports.ifStop = ifStop;
-exports.allStop = allStop;
-exports.stopUser = stopUser;
+exports.speakManage = speakManage;
 //admin
 exports.adminLogin = adminLogin;
 //用户管理
 exports.allUser = allUser;
+exports.delUser = delUser;
 //聊天记录
-exports.saveRecord=saveRecord;
-exports.chatRecord=chatRecord;
+exports.saveRecord = saveRecord;
+exports.chatRecord = chatRecord;
