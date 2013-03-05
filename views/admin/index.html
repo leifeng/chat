@@ -11,36 +11,47 @@
     <![endif]-->
 </head>
 <body>
-<div class="container">
-    <H1><%if(query.length){%>
-        <%=query%>
-        <%}%></h1>
-    <table class="table">
-        <tr>
-            <td>id</td>
-            <td>用户名</td>
-            <td>用户状态</td>
-            <td>操作</td>
-        </tr>
-        <%for(var i=3;i<=Users.length;i+=3){%>
 
-        <tr>
-        <td><%=Users[i-3]%></td>
-        <td><%=Users[i-2]%></td>
-            <td>   <%if(Users[i-1]=="0"){%>
-            <span class='badge'>禁言中</span>
-            <%}else{%>
-            <span class='badge badge-success'>正常</span>
-            <%}%></td>
-        <td><a href="/admin/index?id=<%=Users[i-3]%>">提交</a></td>
-        </tr>
-        <%}%>
-    </table>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span3">
+            <ul class="nav nav-list">
+                <li class="nav-header">后台导航</li>
+                <li class="active"><a href="/admin/index">用户管理</a></li>
+                <li><a href="#">扩展</a></li>
+                <li><a href="#">扩展</a></li>
+                <li><a href="#">扩展</a></li>
+                <li><a href="#">扩展</a></li>
+                <li><a href="#">扩展</a></li>
+            </ul>
+        </div>
+        <div class="span9">
+            <table class="table">
+                <tr>
+                    <td>id</td>
+                    <td>用户名</td>
+                    <td>用户状态</td>
+                    <td>操作</td>
+                </tr>
+                <%for(var i=3;i<=Users.length;i+=3){%>
+                <tr>
+                    <td><%=Users[i-3]%></td>
+                    <td><%=Users[i-2]%></td>
+                    <td><%if(Users[i-1]=="0"){%>
+                        <span class='badge'>禁言中</span>
+                        <%}else{%>
+                        <span class='badge badge-success'>正常</span>
+                        <%}%>
+                    </td>
+                    <td><a class="btn btn-mini" href="/admin/index?id=<%=Users[i-3]%>">改变状态</a> <a
+                            class="btn btn-danger btn-mini" href="/admin/index?del=<%=Users[i-3]%>">删除用户</a></td>
+                </tr>
+                <%}%>
+            </table>
+        </div>
+    </div>
+
 </div>
-
-
-
-
 
 
 <script src="http://code.jquery.com/jquery.js"></script>
